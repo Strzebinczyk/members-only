@@ -14,7 +14,7 @@
         <h3><%= post.title %></h3>
         <%= post.post_content %>
         <p>Made by: <% if user_signed_in? %>
-                         <%= post.author_id %>
+                         <%= post.user.email %>
                        <% else %>
                          Anonymous
                        <% end %></p>
@@ -22,5 +22,6 @@
     </li>
   <% end %>
 </ul>
-
-<%= link_to "New Post", new_post_path %>
+<% if user_signed_in? %>
+  <%= link_to "New Post", new_post_path %>
+<% end %></p>
